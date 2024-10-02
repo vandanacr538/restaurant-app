@@ -1,0 +1,23 @@
+.meal-item{
+    border-bottom: 1px solid #dad7d7;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 15px;
+}
+.meal-item div{
+    margin-top: 2px;
+}
+.meal-name h3{
+    margin: 0px;
+}
+
+.meal-description{
+    font-style: italic;
+}
+
+.meal-price{
+    color: #5c3109;
+    font-weight: bold;
+}
