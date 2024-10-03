@@ -5,14 +5,25 @@ const CartProvider=(props)=>{
     const [items, setItems] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
 
-    const addItemToCartHandler=(item)=>{
+    const addItemToCartHandler=(newItem)=>{
         setItems((prevItems)=>{
-            return [...prevItems, item];
+            const itemExist=prevItems.find((item)=> item.id === newItem.id);
+            if(itemExist){
+                return prevItems.map((item)=>{
+                    if(item.id===newItem.id){
+                        return {...item, quantity: item.quantity + newItem.quantity};
+                    }
+                    return item;
+                })
+            }
+            else{
+                return [...prevItems, newItem];
+            }
         });
         setTotalAmount((prevAmount)=>{
-            return prevAmount+item.price*item.amount;
+            const total=prevAmount+(newItem.price*newItem.quantity);
+            return parseFloat(total.toFixed(2)); // Fixing to 2 decimals
         });
-        console.log(cartContext);
     }
 
     const removeItemFromCartHandler=(id)=>{

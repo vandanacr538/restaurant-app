@@ -17,7 +17,7 @@ const Cart=(props)=>{
             </ul>
             <div className="total">
                 <span>Total Amount</span>
-                <span>120</span>
+                <span>{cartCtx.totalAmount}</span>
             </div>
             <div className="actions">
                 <button className="button--alt" onClick={props.onClose}>Close</button>
