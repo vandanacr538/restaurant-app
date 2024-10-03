@@ -2,14 +2,18 @@
     border-bottom: 1px solid #dad7d7;
     padding-bottom: 12px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     margin: 1rem;
 }
-.meal-item div{
-    margin-top: 2px;
+
+.meal-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.meal-name h3{
+
+.meal-name{
     margin: 0px;
 }
 
@@ -21,4 +25,8 @@
     color: #ad5502;
     font-weight: bold;
     font-size: 1.25rem;
+}
+
+.meal-name, .meal-description, .meal-price{
+    margin-top: 2px;
 }
