@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Cart.css";
 import Modal from "../UI/Modal";
+import CartContext from "../../store/cart-context";
 
 const Cart=(props)=>{
-    const cartItems=[{id: '1',
-        name: "Sushi",
-        amount: 2,
-        price: 12.99
-    }];
+    const cartCtx = useContext(CartContext);
 
     return (
         <Modal>
             <ul className="cart-items">
-                {cartItems.map((item)=>{
+                {cartCtx.items.map((item)=>{
                     return (
-                        <li key={item.id}>{item.name}</li>
+                        <li key={item.id}>Name: {item.name} Price: {item.price} Quantity: {item.quantity}</li>
                     )
                 })}
             </ul>

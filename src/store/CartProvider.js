@@ -12,6 +12,7 @@ const CartProvider=(props)=>{
         setTotalAmount((prevAmount)=>{
             return prevAmount+item.price*item.amount;
         });
+        console.log(cartContext);
     }
 
     const removeItemFromCartHandler=(id)=>{
