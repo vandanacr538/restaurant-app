@@ -6,6 +6,11 @@ import CartItem from "./CartItem";
 
 const Cart=(props)=>{
     const cartCtx = useContext(CartContext);
+    const totalAmount=parseFloat(cartCtx.totalAmount.toFixed(2)); // Fixing to 2 decimals
+
+    const cartItemRemoveHandler=(id)=>{
+        cartCtx.removeItem(id);
+    }
 
     return (
         <Modal>
@@ -17,13 +22,14 @@ const Cart=(props)=>{
                             itemName={item.name}
                             itemPrice={item.price}
                             itemQuantity={item.quantity}
+                            onRemove={()=>cartItemRemoveHandler(item.id)}
                         />
                     )
                 })}
             </ul>
             <div className="total">
                 <span>Total Amount</span>
-                <span>${cartCtx.totalAmount}</span>
+                <span>${totalAmount}</span>
             </div>
             <div className="actions">
                 <button className="button--alt" onClick={props.onClose}>Close</button>

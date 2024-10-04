@@ -22,18 +22,28 @@ const CartProvider=(props)=>{
         });
         setTotalAmount((prevAmount)=>{
             const total=prevAmount+(newItem.price*newItem.quantity);
-            return parseFloat(total.toFixed(2)); // Fixing to 2 decimals
+            return total; 
         });
     }
 
     const removeItemFromCartHandler=(id)=>{
-        setItems((prevItems)=>{
-            return [prevItems.filter((item)=>item.id!==id)];
-        });
         const itemToRemove=items.find(item=>item.id===id);
-        setTotalAmount((prevAmount)=>{
-            return prevAmount-itemToRemove.price*itemToRemove.amount;
-        });
+        if(itemToRemove){
+            if(itemToRemove.quantity>1){
+                itemToRemove.quantity--;
+                console.log(items);
+                setItems([...items]);
+            }
+            else{
+                setItems((prevItems)=>{
+                    return prevItems.filter((item)=>item.id!==itemToRemove.id);
+                })
+            }
+            setTotalAmount((prevAmount)=>{
+                const total=prevAmount-itemToRemove.price*1;
+                return total;
+            });
+        }
     }
 
     const cartContext={
