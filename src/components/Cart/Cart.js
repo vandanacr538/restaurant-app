@@ -12,6 +12,10 @@ const Cart=(props)=>{
         cartCtx.removeItem(id);
     }
 
+    const cartItemAddHandler=(item)=>{
+        cartCtx.addItem({...item, quantity:1});
+    }
+
     return (
         <Modal>
             <ul className="cart-items">
@@ -23,6 +27,7 @@ const Cart=(props)=>{
                             itemPrice={item.price}
                             itemQuantity={item.quantity}
                             onRemove={()=>cartItemRemoveHandler(item.id)}
+                            onAdd={()=>cartItemAddHandler(item)}
                         />
                     )
                 })}
